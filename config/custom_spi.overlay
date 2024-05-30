@@ -1,0 +1,21 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    fragment@0 {
+        target-path = "/";
+        __overlay__ {
+            &spi3 {
+                pinctrl-2 = <&spi3_custom_cs>; // Use the custom cs-gpios configuration
+                pinctrl-names = "default", "sleep", "custom_cs";
+            };
+
+            spi3_custom_cs: spi3_custom_cs {
+                gpio-controller;
+                #gpio-cells = <2>;
+                compatible = "nordic,nrf-gpio";
+                spi3-cs-gpios = <&gpio1 11 GPIO_ACTIVE_LOW>; // Use pin 11 for chip select
+            };
+        };
+    };
+};
