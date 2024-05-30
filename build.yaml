@@ -20,5 +20,6 @@
 include:
   - board: nice_nano_v2
     shield: corne_left nice_view_adapter nice_view
+    cmake-args: -DZMK_CONFIG="${{ github.workspace }}/config" -DCONFIG_ZMK_CONFIG=${{ github.workspace }}/config/corne.conf
   - board: nice_nano_v2
-    shield: corne_right nice_view_adapter nice_view
+    cmake-args: -DZMK_CONFIG="${{ github.workspace }}/config" -DCONFIG_ZMK_CONFIG=${{ github.workspace }}/config/corne.conf
