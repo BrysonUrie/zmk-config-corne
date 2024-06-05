@@ -53,8 +53,8 @@
                         bindings = <
 &kp TAB  &kp EXCL  &kp AT  &kp HASH       &kp DLLR   &kp PRCNT    &kp CARET  &kp AMPS  &kp KP_MULTIPLY   &kp LPAR  &kp RPAR         &kp DEL
 &trans   &trans    &trans  &kp PIPE       &kp EQUAL  &kp MINUS    &trans     &kp LT   &kp GREATER_THAN  &kp LBRC  &kp RIGHT_BRACE  &kp GRAVE
-&trans   &trans    &trans  &kp BACKSLASH  &kp PLUS   &kp UNDER    &trans     &kp KP_SLASH    &kp BACKSLASH  &kp LBKT  &kp RBKT         &kp TILDE
-                            &kp LALT   &mo 3     &kp SPACE    &kp ENTER      &mo 3    &kp RCTRL
+&LALT   &trans    &trans  &kp BACKSLASH  &kp PLUS   &kp UNDER    &trans     &kp KP_SLASH    &kp BACKSLASH  &kp LBKT  &kp RBKT         &kp TILDE
+                            &kp LCTRL   &mo 3     &kp SPACE    &kp ENTER      &mo 3    &kp RCTRL
                         >;
                 };
 
@@ -69,7 +69,7 @@
 &trans  &kp F1           &kp F2           &kp F3           &kp F4           &kp F5             &kp F6           &kp F7  &kp F8  &kp F9   &kp F10  &trans
 &trans  &rgb_ug RGB_TOG  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_EFF    &kp LEFT  &kp DOWN   &kp UP  &kp RIGHT  &kp F11  &kp F12
 &trans  &trans           &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFR    &trans  &bt BT_PRV &bt BT_CLR  &bt BT_NXT    &trans  &trans
-                                            &rgb_ug RGB_SPI  &rgb_ug RGB_SPD           &trans             &trans           &trans  &kp RCTRL
+                                            &rgb_ug RGB_SPI  &rgb_ug RGB_SPD    &rgb_ug RGB_SPD             &trans           &trans  &kp RCTRL
                         >;
                 };
         };
