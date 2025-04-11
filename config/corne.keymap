@@ -25,7 +25,7 @@
 &kp ESCAPE  &kp Q  &kp W  &kp E         &kp R      &kp T     &kp Y      &kp U      &kp I      &kp O    &kp P     &kp BSPC
 &kp TAB     &kp A  &kp S  &kp D         &kp F      &kp G     &kp H      &kp J      &kp K      &kp L    &kp SEMI  &kp SQT
 &kp LSHFT   &kp Z  &kp X  &kp C         &kp V      &kp B     &kp N      &kp M      &kp COMMA  &kp DOT  &kp FSLH  &kp RIGHT_SHIFT
-                          &kp LEFT_GUI  &mo 1      &kp ENTER &kp SPACE  &mo 2      &kp RCTRL
+                          &kp LEFT_GUI &kp SPACE &mo 1        &mo 2    &kp ENTER   &kp RCTRL
                         >;
                 };
                 lower_layer {
@@ -39,7 +39,7 @@
 &trans   &kp N1  &kp N2          &kp N3       &kp N4            &kp N5             &kp N6     &kp N7    &kp N8     &kp N9     &kp N0  &kp DEL
 &trans   &trans  &kp C_PREVIOUS  &kp C_NEXT   &kp C_PLAY_PAUSE  &kp C_VOLUME_UP    &trans     &kp N4    &kp N5     &kp N6     &trans  &trans
 &kp CAPS   &trans  &trans          &trans       &kp PRINTSCREEN   &kp C_VOL_DN       &trans     &kp N1    &kp N2      &kp N3    &trans  &kp CAPS
-                                 &kp LEFT_ALT &mo 3               &kp ENTER     &kp SPACE     &mo 3     &kp N0
+                                 &kp LEFT_ALT  &kp SPACE    &mo 3             &mo 3         &kp ENTER   &kp N0
                         >;
                 };
 
@@ -55,7 +55,7 @@
 &kp TAB  &kp EXCL  &kp AT  &kp HASH       &kp DLLR   &kp PRCNT    &kp CARET  &kp AMPS  &kp KP_MULTIPLY   &kp LPAR  &kp RPAR         &kp DEL
 &trans   &trans    &trans  &kp PIPE       &kp EQUAL  &kp MINUS    &trans     &kp LT   &kp GREATER_THAN  &kp LBRC  &kp RIGHT_BRACE  &kp GRAVE
 &trans   &trans    &trans  &kp BACKSLASH  &kp PLUS   &kp UNDER    &trans     &kp KP_SLASH    &kp BACKSLASH  &kp LBKT  &kp RBKT         &kp TILDE
-                            &kp LALT   &mo 3   &kp ENTER     &kp SPACE       &mo 3    &kp RCTRL
+                            &kp LALT    &kp SPACE    &mo 3      &mo 3    &kp ENTER    &kp RCTRL
                         >;
                 };
 
