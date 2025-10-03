@@ -12,6 +12,29 @@
 #include <dt-bindings/zmk/ext_power.h>
  
 / {
+        behaviors {
+            hr: home_row_mod {
+                compatible = "zmk,behavior-hold-tap";
+                #binding-cells = <2>;
+                flavor = "tap-preferred";
+                tapping-term-ms = <280>;
+                quick-tap-ms = <175>;
+                bindings = <&kp>, <&kp>;
+                display-name = "Home-Row-Mod";
+            };
+             td_1: tap_dance_1 {
+                compatible = "zmk,behavior-tap-dance";
+                #binding-cells = <0>;
+                tapping-term-ms = <200>;
+                bindings = <&kp Q>, <&kp ESC>;
+            };
+            td_2: tap_dance_2 {
+                compatible = "zmk,behavior-tap-dance";
+                #binding-cells = <0>;
+                tapping-term-ms = <200>;
+                bindings = <&kp W>, <&kp TAB>;
+            };
+        };
         keymap {
                 compatible = "zmk,keymap";
                 default_layer {
@@ -22,10 +45,10 @@
 // | LSHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | RSHIFT  |
 //                     | GUI | LWR | SPC |   | ENT | RSE  | RCRTL |
                         bindings = <
-&kp ESCAPE  &kp Q  &kp W  &kp E         &kp R      &kp T     &kp Y      &kp U      &kp I      &kp O    &kp P     &kp BSPC
-&kp TAB     &kp A  &kp S  &kp D         &kp F      &kp G     &kp H      &kp J      &kp K      &kp L    &kp SEMI  &kp SQT
+&kp ESCAPE  &td_1 &td_2 &kp E         &kp R      &kp T     &kp Y      &kp U      &kp I      &kp O    &kp P     &kp BSPC
+&kp TAB     &hr LSHIFT A  &hr LGUI S  &hr RCTRL D  &hr LALT F  &kp G     &kp H      &hr RALT J  &hr RCTRL K  &hr  RGUI L    &hr RSHIFT SEMI  &kp SQT
 &kp LSHFT   &kp Z  &kp X  &kp C         &kp V      &kp B     &kp N      &kp M      &kp COMMA  &kp DOT  &kp FSLH  &kp RIGHT_SHIFT
-                          &kp LEFT_GUI &kp SPACE &mo 1        &mo 2    &kp ENTER   &kp RCTRL
+                          &kp LEFT_GUI &kp SPACE &mo 1         &mo 2  &kp ENTER    &kp RCTRL
                         >;
                 };
                 lower_layer {
@@ -37,9 +60,9 @@
 //                   | LALT |  F-L  | SPC |   | ENT | F-L | 0  |
                         bindings = <
 &trans   &kp N1  &kp N2          &kp N3       &kp N4            &kp N5             &kp N6     &kp N7    &kp N8     &kp N9     &kp N0  &kp DEL
-&trans   &trans  &kp C_PREVIOUS  &kp C_NEXT   &kp C_PLAY_PAUSE  &kp C_VOLUME_UP    &trans     &kp N4    &kp N5     &kp N6     &trans  &trans
+&trans   &kp LSHIFT  &hr LGUI C_PREVIOUS  &hr LCTRL C_NEXT   &hr LALT C_PLAY_PAUSE  &kp C_VOLUME_UP    &trans     &hr RALT N4    &hr RCTRL N5     &hr RGUI N6     &kp RSHIFT  &trans
 &kp CAPS   &trans  &trans          &trans       &kp PRINTSCREEN   &kp C_VOL_DN       &trans     &kp N1    &kp N2      &kp N3    &trans  &kp CAPS
-                                 &kp LEFT_ALT  &kp SPACE    &mo 3             &mo 3         &kp ENTER   &kp N0
+                                 &kp LEFT_ALT             &kp SPACE  &mo 3          &mo 3  &kp ENTER    &kp N0
                         >;
                 };
 
@@ -53,9 +76,9 @@
 //                    | LALT | F-L | SPC |   | ENT | F-L | RCTRL |
                         bindings = <
 &kp TAB  &kp EXCL  &kp AT  &kp HASH       &kp DLLR   &kp PRCNT    &kp CARET  &kp AMPS  &kp KP_MULTIPLY   &kp LPAR  &kp RPAR         &kp DEL
-&trans   &trans    &trans  &kp PIPE       &kp EQUAL  &kp MINUS    &trans     &kp LT   &kp GREATER_THAN  &kp LBRC  &kp RIGHT_BRACE  &kp GRAVE
+&trans   &kp LSHIFT  &kp LGUI  &hr LCTRL PIPE   &hr LALT EQUAL  &kp MINUS    &trans     &hr RALT LT   &hr RCTRL GREATER_THAN  &hr RGUI LBRC  &hr RSHIFT RIGHT_BRACE  &kp GRAVE
 &trans   &trans    &trans  &kp BACKSLASH  &kp PLUS   &kp UNDER    &trans     &kp KP_SLASH    &kp BACKSLASH  &kp LBKT  &kp RBKT         &kp TILDE
-                            &kp LALT    &kp SPACE    &mo 3      &mo 3    &kp ENTER    &kp RCTRL
+                            &kp LALT     &kp SPACE  &mo 3 &mo 3      &kp ENTER        &kp RCTRL
                         >;
                 };
 
@@ -68,16 +91,10 @@
 //                    |      |    |    |   |    |     | RCTRL |
                         bindings = <
 &trans  &kp F1           &kp F2           &kp F3           &kp F4           &kp F5             &kp F6           &kp F7  &kp F8  &kp F9   &kp F10  &trans
-&trans  &rgb_ug RGB_TOG  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_EFF    &kp LEFT  &kp DOWN   &kp UP  &kp RIGHT  &kp F11  &kp F12
-&trans  &ext_power EP_TOG           &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFR    &trans  &bt BT_PRV &bt BT_CLR  &bt BT_NXT    &trans  &trans
+&trans  &ext_power EP_OFF  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_EFF    &kp LEFT  &kp DOWN   &kp UP  &kp RIGHT  &kp F11  &kp F12
+&trans  &ext_power EP_ON  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFR    &trans  &bt BT_PRV &bt BT_CLR  &bt BT_NXT    &trans  &trans
                                             &rgb_ug RGB_SPI  &rgb_ug RGB_SPD           &trans             &trans           &trans  &kp RCTRL
                         >;
                 };
         };
 };
-
-&led_strip {
-    chain-length = <27>;
-};
-
-&nice_view_spi { cs-gpios = <&pro_micro 8 GPIO_ACTIVE_HIGH>; };
